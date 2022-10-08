@@ -1,0 +1,32 @@
+﻿h1 {
+    font-size: 1.75em;
+}
+
+.jumbotron {
+    padding-top: 10;
+    padding-bottom: 0;
+    background-color: #faebd700;
+}
+
+    .jumbotron a img {
+        background-color: #faebd700;
+    }
+
+.input-validation-error {
+    border: 2px solid #dc3545; /* same red as text-danger */
+    background-color: #faebd7; /* antique white */
+}
+
+td {
+    text-align: center;
+}
+
+
+
+footer {
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+

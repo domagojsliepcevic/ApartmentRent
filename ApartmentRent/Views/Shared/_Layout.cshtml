@@ -1,0 +1,178 @@
+﻿@{
+
+
+
+    // use current controller or area to determine if tab is active
+    var current = ViewContext.RouteData.Values["area"]?.ToString() ??
+        ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" lang="en-gb" content="width=device-width, initial-scale=1">
+    <title>Rwa Apartment @ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/fa15108486.js" crossorigin="anonymous"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    @RenderSection("scripts", false)
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-dark " style="background-color: rgba(0, 0, 0, 0.88);">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu"
+                    aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item @Nav.Active("Home", current)">
+                        <a class="nav-link" asp-action="Index" asp-controller="Home" asp-area="">
+                            <span class="fa-solid fa-house"></span>&nbsp;Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item @Nav.Active("Search", current)">
+                        <a class="nav-link" asp-action="List" asp-controller="Apartment" asp-area="">
+                            <span class="fa-solid fa-magnifying-glass"></span>&nbsp;Search
+                        </a>
+                    </li>
+                    <li class="nav-item @Nav.Active("Contact", current)">
+                        <a class="nav-link" asp-action="Index" asp-controller="Contact" asp-area="">
+                            <span class="fa-regular fa-message"></span>&nbsp;Contact
+                        </a>
+                    </li>
+
+                    <li class="nav-item @Nav.Active("About Us", current)">
+                        <a class="nav-link" asp-action="" asp-controller="" asp-area="">
+                            <span class="fa-solid fa-circle-info"></span>&nbsp;AboutUs
+                        </a>
+                    </li>
+                </ul>
+
+
+                <ul class="navbar-nav ml-auto">
+                    <!-- Login buttons and links -->
+                    @using Microsoft.AspNetCore.Identity
+                    @inject SignInManager<User> signInManager
+
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                    // signed-in user - Log Out button and username
+                        <li class="nav-item">
+                            <form method="post" asp-action="LogOut" asp-controller="Account"
+                              asp-area="">
+                                <input type="submit" value="Log Out"
+                                   class="btn btn-outline-light" />
+                                <span class="text-light">@User.Identity.Name</span>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+                        // anonymous user - Register link and Log In button
+                        <li class="nav-item @Nav.Active("Register", action)">
+                            <a asp-action="Register" asp-controller="Account"
+                           asp-area="" class="nav-link">
+                                <span class="fas fa-edit"></span>&nbsp;Register
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="Login" asp-controller="Account"
+                           asp-area="" class="btn btn-outline-light">Log In</a>
+                        </li>
+                    }
+
+                    <li class="nav-item @Nav.Active("Admin", current)">
+                        <a class="nav-link" asp-action="Index" asp-controller="User" asp-area="Admin">
+                            <span class="fas fa-cog"></span>&nbsp;Admin
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <header class="jumbotron text-center">
+            <a asp-action="Index" asp-controller="Home">
+                <img src="~/images/logo.png" class="img-fluid" width="15%" />
+            </a>
+        </header>
+
+        <main>
+            @if (TempData.Keys.Contains("message"))
+            {
+                <h4 class="bg-info text-center text-white p-2">@TempData["message"]</h4>
+            }
+            @RenderBody()
+        </main>
+
+        <footer class="text-center text-white" style="background-color: #f1f1f1;">
+            <!-- Grid container -->
+            <div class="container pt-4">
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                    <!-- Facebook -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                       href="#!"
+                       role="button"
+                       data-mdb-ripple-color="dark">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <!-- Twitter -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                       href="#!"
+                       role="button"
+                       data-mdb-ripple-color="dark">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <!-- Google -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                       href="#!"
+                       role="button"
+                       data-mdb-ripple-color="dark">
+                        <i class="fab fa-google"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                       href="#!"
+                       role="button"
+                       data-mdb-ripple-color="dark">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <!-- Linkedin -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                       href="#!"
+                       role="button"
+                       data-mdb-ripple-color="dark">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <!-- Github -->
+                    <a class="btn btn-link btn-floating btn-lg text-dark m-1"
+                       href="#!"
+                       role="button"
+                       data-mdb-ripple-color="dark">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </section>
+                <!-- Section: Social media -->
+            </div>
+            <!-- Grid container -->
+            <!-- Copyright -->
+            <div class="text-center text-light p-3" style="background-color: rgba(0, 0, 0, 0.88);">
+                © 2022 Copyright: QualityRentals.com
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
+</body>
+</html>

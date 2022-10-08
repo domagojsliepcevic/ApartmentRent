@@ -1,0 +1,43 @@
+﻿@model UserViewModel
+
+@{
+    ViewData["Title"] = " | User Details";
+}
+
+<h1>User Details</h1>
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr class="thead-dark">
+            <th>UserName:</th>
+            <th>First Name:</th>
+            <th>Last Name:</th>
+            <th>Phone Number:</th>
+            <th>Role:</th>
+            <th>Registered:</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.User.UserName:</td>
+            <td>@Model.User.FirstName</td>
+            <td>@Model.User.LastName</td>
+            <td>@Model.User.PhoneNumber</td>
+            <td>
+                @foreach (string roleName in Model.RoleNames)
+                {
+                    <div>@roleName</div>
+                }
+            </td>
+            <td>@Model.User.CreatedAt</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<form asp-action="Edit" asp-controller="User" method="post">
+    <button type="submit" name="id" value="@Model.User.Id"
+            class="btn btn-primary">
+        Modify
+    </button>
+</form>

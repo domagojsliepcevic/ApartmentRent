@@ -1,0 +1,75 @@
+﻿@model TagViewModel
+
+@{
+    // this view is used for add, edit, and delete.
+    // Which one is determined by the action method name.
+    var action = ViewContext.RouteData.Values["action"].ToString().Capitalize();
+    ViewData["Title"] = $" | {action} Tag";
+}
+
+<h1>@action Tag</h1>
+
+<form asp-action="@action" asp-area="Admin" method="post">
+
+    @* Tag ID needed by both delete and edit *@
+    <input type="hidden" asp-for="Tag.TagId" />
+
+    @* Operation field needed by remote validation *@
+    <input type="hidden" name="Operation" value="@action" />
+
+    @* if deleting, just display full name, but include
+        name in hidden fields so can be used to display delete message.
+        Otherwise, provide text boxes for Name and NameEng. *@
+    @if (Operation.IsDelete(action))
+    {
+        <div class="col-sm-4"><label>@Model.Tag.Name</label></div>
+        <input type="hidden" asp-for"Tag.Name" />
+    }
+    else
+    {
+        <div class="form-group row">
+            <div class="col-sm-2"><label> Name:</label></div>
+            <div class="col-sm-4">
+                <input type="text" asp-for="@Model.Tag.Name" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="@Model.Tag.Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Name eng:</label></div>
+            <div class="col-sm-4">
+                <input type="text" asp-for="@Model.Tag.NameEng" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="@Model.Tag.NameEng" class="text-danger"></span>
+            </div>
+        </div>
+        @*<select  asp-for="@Model.TypeId" class="form-control">
+            <option value=>Aparati</option>
+            <option value=>Podrucja</option>
+            <option value=>Ostalo</option>
+            </select>*@
+        <div class="form-group row">
+            <div class="col-sm-2"><label>Tag type:</label></div>
+            <div class="col-sm-4">
+                <select asp-for="Tag.TypeId" class="form-control"
+                    asp-items='@new SelectList(Model.TagType, "TypeId", "Name", Model.Tag.TypeId)'>
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Tag.TypeId" class="text-danger"></span>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-2">
+            <button type="submit" class="btn btn-primary">@action</button>
+
+            @* return user to main admin page after add, or to search page otherwise *@
+            <a asp-action="@(Operation.IsAdd(action) ? "Index" : "Search")"
+               class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+</form>

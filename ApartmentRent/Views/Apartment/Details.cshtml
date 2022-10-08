@@ -1,0 +1,64 @@
+﻿@model Apartment
+
+@{
+    ViewData["Title"] = " | Apartment Details";
+}
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>@Model.Name</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-9"><img src="@("/images/"+ Model.ApartmentProfilePicture.ApartmentName + "/" + Model.ApartmentProfilePicture.ImageName)" width:100% > </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            @Model.Address
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">...detalji...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<section class="gallery min-vh-50">
+    <div class="container-lg">
+        <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
+            @foreach (ApartmentAlbum ap in Model.ApartmentAlbum)
+            {
+                <div class="col">
+                    <img src="@("/images/"+ ap.Apartment.ApartmentProfilePicture.ApartmentName + "/" + ap.Picture.ImageName)" class="gallery-item" alt="gallery">
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="gallery-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="@("/images/"+Model.ApartmentAlbum.Select(p=>p.Apartment.Name==p.Picture.ApartmentName?p.Picture.ImageName:null))" class="modal-img" alt="modal img">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/site.js"></script>

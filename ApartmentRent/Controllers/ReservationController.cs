@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApartmentRent.Controllers
 {
-    public class BookingController : Controller
+    public class ReservationController : Controller
     {
         [Authorize(Roles = "Member,Admin")]
-        public IActionResult Booking()
+        public IActionResult Reservation()
         {
             return View();
         }

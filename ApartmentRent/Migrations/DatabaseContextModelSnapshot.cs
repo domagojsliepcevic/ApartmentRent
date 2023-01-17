@@ -155,7 +155,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             ApartmentOwnerId = 1,
-                            CreatedAt = new DateTime(2022, 7, 17, 13, 43, 43, 618, DateTimeKind.Local).AddTicks(6758),
+                            CreatedAt = new DateTime(2022, 12, 12, 18, 9, 14, 428, DateTimeKind.Local).AddTicks(7863),
                             Email = "domagoj.sliepcevic@racunarstvo.hr",
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Domagoj Sliepcevic"
@@ -340,7 +340,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 1,
-                            CreatedAt = new DateTime(2022, 7, 17, 13, 43, 43, 624, DateTimeKind.Local).AddTicks(3628),
+                            CreatedAt = new DateTime(2022, 12, 12, 18, 9, 14, 436, DateTimeKind.Local).AddTicks(8089),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Kafe aparat",
                             NameEng = "Coffee maker",
@@ -349,7 +349,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 2,
-                            CreatedAt = new DateTime(2022, 7, 17, 13, 43, 43, 624, DateTimeKind.Local).AddTicks(4715),
+                            CreatedAt = new DateTime(2022, 12, 12, 18, 9, 14, 436, DateTimeKind.Local).AddTicks(9541),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Perilica sudja",
                             NameEng = "Dishwasher",
@@ -358,7 +358,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 3,
-                            CreatedAt = new DateTime(2022, 7, 17, 13, 43, 43, 624, DateTimeKind.Local).AddTicks(4766),
+                            CreatedAt = new DateTime(2022, 12, 12, 18, 9, 14, 436, DateTimeKind.Local).AddTicks(9605),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Balkon",
                             NameEng = "Balcony",
@@ -367,7 +367,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 4,
-                            CreatedAt = new DateTime(2022, 7, 17, 13, 43, 43, 624, DateTimeKind.Local).AddTicks(4769),
+                            CreatedAt = new DateTime(2022, 12, 12, 18, 9, 14, 436, DateTimeKind.Local).AddTicks(9610),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Kupaonica",
                             NameEng = "Bathroom",
@@ -376,7 +376,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 5,
-                            CreatedAt = new DateTime(2022, 7, 17, 13, 43, 43, 624, DateTimeKind.Local).AddTicks(4772),
+                            CreatedAt = new DateTime(2022, 12, 12, 18, 9, 14, 436, DateTimeKind.Local).AddTicks(9614),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Kada",
                             NameEng = "Bathtub",
@@ -385,7 +385,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 6,
-                            CreatedAt = new DateTime(2022, 7, 17, 13, 43, 43, 624, DateTimeKind.Local).AddTicks(4775),
+                            CreatedAt = new DateTime(2022, 12, 12, 18, 9, 14, 436, DateTimeKind.Local).AddTicks(9618),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Bide",
                             NameEng = "Bidet",

@@ -32,10 +32,11 @@ namespace ApartmentRent.Controllers
             {
                 var user = new User { FirstName=model.FirstName, LastName=model.LastName,UserName=model.Email, Email=model.Email, PhoneNumber=model.PhoneNumber};
                 var result = await userManager.CreateAsync(user, model.Password);
-                await userManager.AddToRoleAsync(user, "Member");
+               
 
                 if (result.Succeeded)
                 {
+                    await userManager.AddToRoleAsync(user, "Member");
                     bool isPersistent = false;
                     await signInManager.SignInAsync(user, isPersistent);
                     return RedirectToAction("Index", "Home");

@@ -4,14 +4,16 @@ using ApartmentRent.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ApartmentRent.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230118124050_ApartmentReview")]
+    partial class ApartmentReview
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -155,7 +157,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             ApartmentOwnerId = 1,
-                            CreatedAt = new DateTime(2023, 1, 18, 14, 32, 33, 121, DateTimeKind.Local).AddTicks(5130),
+                            CreatedAt = new DateTime(2023, 1, 18, 13, 40, 49, 611, DateTimeKind.Local).AddTicks(2801),
                             Email = "domagoj.sliepcevic@racunarstvo.hr",
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Domagoj Sliepcevic"
@@ -206,34 +208,6 @@ namespace ApartmentRent.Migrations
                     b.HasKey("ImageId");
 
                     b.ToTable("ApartmentProfilePicture");
-                });
-
-            modelBuilder.Entity("ApartmentRent.Models.ApartmentReview", b =>
-                {
-                    b.Property<int>("ApartmentReviewId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ApartmentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ReviewText")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ReviewTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("ApartmentReviewId");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ApartmentReviews");
                 });
 
             modelBuilder.Entity("ApartmentRent.Models.ApartmentStatus", b =>
@@ -328,6 +302,31 @@ namespace ApartmentRent.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ApartmentRent.Models.DomainModels.ApartmentReview", b =>
+                {
+                    b.Property<int>("ApartmentReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReviewText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ApartmentReviewId");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ApartmentReviews");
+                });
+
             modelBuilder.Entity("ApartmentRent.Models.Tag", b =>
                 {
                     b.Property<int>("TagId")
@@ -368,7 +367,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 1,
-                            CreatedAt = new DateTime(2023, 1, 18, 14, 32, 33, 127, DateTimeKind.Local).AddTicks(1882),
+                            CreatedAt = new DateTime(2023, 1, 18, 13, 40, 49, 617, DateTimeKind.Local).AddTicks(1954),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Kafe aparat",
                             NameEng = "Coffee maker",
@@ -377,7 +376,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 2,
-                            CreatedAt = new DateTime(2023, 1, 18, 14, 32, 33, 127, DateTimeKind.Local).AddTicks(2827),
+                            CreatedAt = new DateTime(2023, 1, 18, 13, 40, 49, 617, DateTimeKind.Local).AddTicks(2904),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Perilica sudja",
                             NameEng = "Dishwasher",
@@ -386,7 +385,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 3,
-                            CreatedAt = new DateTime(2023, 1, 18, 14, 32, 33, 127, DateTimeKind.Local).AddTicks(2869),
+                            CreatedAt = new DateTime(2023, 1, 18, 13, 40, 49, 617, DateTimeKind.Local).AddTicks(2945),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Balkon",
                             NameEng = "Balcony",
@@ -395,7 +394,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 4,
-                            CreatedAt = new DateTime(2023, 1, 18, 14, 32, 33, 127, DateTimeKind.Local).AddTicks(2873),
+                            CreatedAt = new DateTime(2023, 1, 18, 13, 40, 49, 617, DateTimeKind.Local).AddTicks(2948),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Kupaonica",
                             NameEng = "Bathroom",
@@ -404,7 +403,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 5,
-                            CreatedAt = new DateTime(2023, 1, 18, 14, 32, 33, 127, DateTimeKind.Local).AddTicks(2875),
+                            CreatedAt = new DateTime(2023, 1, 18, 13, 40, 49, 617, DateTimeKind.Local).AddTicks(2950),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Kada",
                             NameEng = "Bathtub",
@@ -413,7 +412,7 @@ namespace ApartmentRent.Migrations
                         new
                         {
                             TagId = 6,
-                            CreatedAt = new DateTime(2023, 1, 18, 14, 32, 33, 127, DateTimeKind.Local).AddTicks(2878),
+                            CreatedAt = new DateTime(2023, 1, 18, 13, 40, 49, 617, DateTimeKind.Local).AddTicks(2953),
                             Guid = new Guid("00000000-0000-0000-0000-000000000000"),
                             Name = "Bide",
                             NameEng = "Bidet",
@@ -740,7 +739,7 @@ namespace ApartmentRent.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ApartmentRent.Models.ApartmentReview", b =>
+            modelBuilder.Entity("ApartmentRent.Models.DomainModels.ApartmentReview", b =>
                 {
                     b.HasOne("ApartmentRent.Models.Apartment", "Apartment")
                         .WithMany()

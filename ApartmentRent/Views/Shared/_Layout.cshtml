@@ -19,7 +19,6 @@
     <script src="https://kit.fontawesome.com/fa15108486.js" crossorigin="anonymous"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    @RenderSection("scripts", false)
 </head>
 <body>
     <div class="container-fluid">
@@ -89,7 +88,7 @@
                            asp-area="" class="btn btn-outline-light">Log In</a>
                         </li>
                     }
-                    @if(User.IsInRole("Admin"))
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                           <li class="nav-item @Nav.Active("Admin", current)">
                         <a class="nav-link" asp-action="Index" asp-controller="User" asp-area="Admin">
@@ -176,5 +175,6 @@
             <!-- Copyright -->
         </footer>
     </div>
+    @RenderSection("scripts", false)
 </body>
 </html>

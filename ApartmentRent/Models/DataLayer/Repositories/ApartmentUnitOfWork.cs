@@ -119,6 +119,17 @@ namespace ApartmentRent.Models
             }
         }
 
+        private Repository<ApartmentReview> reviewData;
+        public Repository<ApartmentReview> ApartmentReviews
+        {
+            get
+            {
+                if (reviewData == null)
+                    reviewData = new Repository<ApartmentReview>(context);
+                return reviewData;
+            }
+        }
+
         public void DeleteCurrentTaggedApartments(Apartment apartment)
         {
             var currentTags = TaggedApartments.List(new QueryOptions<TaggedApartment>

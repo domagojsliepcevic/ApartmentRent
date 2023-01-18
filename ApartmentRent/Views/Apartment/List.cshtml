@@ -1,0 +1,48 @@
+﻿@model List<Apartment>
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Search</h2>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-12">
+            <form asp-action="List" asp-controller="Apartment" method="get" class="form-inline">
+                <input type="text" name="searchTerm" value="@ViewBag.CurrentFilter" placeholder="Search..." id="searchTerm" onkeyup="search()" />
+            </form>
+        </div>
+    </div>
+    <div id="searchResults">
+    </div>
+</div>
+
+@section scripts {
+    <script>
+    var delay = (function(){
+        var timer = 0;
+        return function(callback, ms){
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+        };
+    })();
+
+    function search() {
+        var searchTerm = $("#searchTerm").val();
+        if (searchTerm.length >= 3) {
+            delay(function () {
+                $.ajax({
+                    type: "GET",
+                        url: '/Apartment/Search',
+                    data: { searchTerm: searchTerm },
+                    success: function (result) {
+                        $('#searchResults').html(result);
+                    }
+                });
+            }, 500);
+        }
+    }
+    </script>
+}

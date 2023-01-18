@@ -14,6 +14,9 @@
 
         Repository<ApartmentPicture> ApartmentPictures { get; }
 
+        Repository<ApartmentReview> ApartmentReviews { get; }
+
+
         Repository<ApartmentProfilePicture> ApartmentProfilePicture { get; }
 
 

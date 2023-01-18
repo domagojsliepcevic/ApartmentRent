@@ -1,0 +1,38 @@
+﻿@model List<Apartment>
+
+@if (Model != null)
+{
+    @if (Model.Count > 0)
+    {
+        @foreach (var a in Model)
+        {
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="@("/images/"+a.ApartmentProfilePicture.ApartmentName + "/" + a.ApartmentProfilePicture.ImageName)"
+                         class="card-img" alt="@a.ApartmentProfilePicture.ApartmentName">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a asp-action="Details" asp-controller="Apartment" asp-route-id="@a.ApartmentId"
+                                                asp-route-slug="@a.Name.Slug()">@a.Name</a>
+                                    </h5>
+                                    <p class="card-text">@a.ShortDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-12">no results</div>
+        </div>
+    }
+}

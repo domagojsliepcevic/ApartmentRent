@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using ApartmentRent.Models.DomainModels;
 
 namespace ApartmentRent.Models
 {
@@ -26,8 +27,7 @@ namespace ApartmentRent.Models
         public DbSet<TagType> TagType { get; set; }
         public DbSet<TaggedApartment> TaggedApartments { get; set; }
         public DbSet<User> User { get; set; }
-
-
+        public DbSet<ApartmentReview> ApartmentReviews { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

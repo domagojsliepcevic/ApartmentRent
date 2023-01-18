@@ -1,4 +1,5 @@
-﻿using ApartmentRent.Models;
+﻿using ApartmentRent.BL;
+using ApartmentRent.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -16,7 +17,6 @@ namespace ApartmentRent.Controllers
 
         public IActionResult Index()
         {
-
             var apartments = data.Apartments.List(new QueryOptions<Apartment>
             {
                 Include="ApartmentProfilePicture",
